@@ -1,26 +1,30 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html>
   <head>
-    <meta charset="utf-8" />
     <title>Bookers</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    
   </head>
-  
-  <body>
+
+  <body class="d-flex flex-column h-100">
     <heder>
       <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-        <a class="navbar-brand" href="/homes#top">Bookers</a>
+        <a class="navbar-brand" href="/">Bookers</a>
         <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
         </button>
         <div class="navbar-collapse collapse" id="navbarCollapse" style>
             <ul class="navbar-nav mr-auto">
               <li class="nav-item active">
-                 <%= link_to "Home", book_path, class: 'nav-link text-dark' %>
-                  <span class="sr-only">(current)</span>
-                </a>
+                 <%= link_to "Home", top_path, class: 'nav-link text-dark' %>
               </li>
               <li class="nav-item">
-                <%= link_to "About", book_path, class: 'nav-link text-dark' %>
+                <%= link_to "About", books_path, class: 'nav-link text-dark' %>
               </li>
               <li class="nav-item">
                 <%= link_to "Sign up", new_user_registration_path, class: 'nav-link text-dark' %>
@@ -32,8 +36,19 @@
         </div>
       </nav>
     </heder>
-      <h1>welcome to Bookers !!</h1>
-     
+    <main>
+      <%= yield %>
+      <div class="container">
+        <div class="row">
+          <div class="mx-auto, col-11, col-sm-10, col-lg-8, col-xl-6">
+          
+            <h1>welcome to <strong>Bookers</strong> !!</h1>
+            <p>In <strong>Bookers</strong>,</p>
+            <p>you can share and exchange your opinions , inpressions , and emotions</p>
+            <p>about various books!</p>
+          </div>
+        </div>
+    </main>
     <footer class="footer mt-auto py-3">
       <div class="container">
         <span class="text-muted">CopyRight Infratop.inc</span>
