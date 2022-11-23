@@ -13,3 +13,30 @@
  *= require_tree .
  *= require_self
  */
+
+ * {
+   margin: 0;
+   padding: 0;
+ }
+
+main > .container {
+  padding: 60px 15px 0;
+}
+
+.footer {
+  display: block;
+}
+
+.footer > .container {
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+code {
+  font-size: 80%;
+}
+
+
+.text-muted {
+  text-align: center;
+}
