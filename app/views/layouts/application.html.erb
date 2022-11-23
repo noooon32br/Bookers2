@@ -1,36 +1,48 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Bookers2</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Bookers</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+
   </head>
 
-  <body>
-    <header>
-    <% if user_signed_in? %>
-      <li>
-      <%= link_to '投稿フォーム', new_book_path %>
-      </li>
-      <li>
-      <%= link_to 'マイページ', user_path(current_user.id) %>
-      </li>
-      <li>
-        <%= link_to "Log out", destroy_user_session_path, method: :delete %>
-      </li>
-    <% else %>
-      <li>
-        <%= link_to "New book", new_user_registration_path %>
-      </li>
-      <li>
-        <%= link_to "Log in", new_user_session_path %>
-      </li>
-    <% end %>
-  </header>
+  <body class="d-flex flex-column h-100">
+    <heder>
+      <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+        <a class="navbar-brand" href="/">Bookers</a>
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse" id="navbarCollapse" style>
+            <ul class="navbar-nav mr-auto">
+              <li class="nav-item active">
+                 <%= link_to "Home", top_path, class: 'nav-link text-dark' %>
+              </li>
+              <li class="nav-item">
+                <%= link_to "About", books_path, class: 'nav-link text-dark' %>
+              </li>
+              <li class="nav-item">
+                <%= link_to "Sign up", new_user_registration_path, class: 'nav-link text-dark' %>
+              </li>
+              <li class="nav-item">
+                <%= link_to "Log in", new_user_session_path, class: 'nav-link text-dark' %>
+              </li>
+            </ul>
+        </div>
+      </nav>
+    </heder>
+    
     <%= yield %>
+    
+    <footer class="footer mt-auto py-3">
+      <div class="container">
+        <span class="text-muted">CopyRight Infratop.inc</span>
+      </div>
+    </footer>
   </body>
 </html>

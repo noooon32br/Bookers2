@@ -1,17 +1,83 @@
-<div>
-  <h3><%= @user.name %></h3>
-  <%= image_tag @user.get_profile_image(100,100) %>
-</div>
-
-<% @users.each do |user| %>
-
-<div>
-  <%= link_to user_path(user.id) do %>
-    <%= image_tag user.get_image %>
-  <% end %>
-  <p><%= image_tag user.get_profile_image(100,100) %></p>
+<!DOCTYPE html>
+<html>
+  <body>
   
-  
+    <main>
+      <div class="container">
+        <div  class="row">
+          <div class="col-md-3">
+
+            <h1>User info</h1>
+            <%= image_tag @user.get_profile_image(100,100) %>
+            <teble class="user-info">
+              <tbody>
+                <tr>
+                  <th>name</th>
+                  <th><%= @user.name %></th>
+                </tr>
+                <tr>
+                  <th>introduction</th>
+                  <th><%= @user.introduction %></th>
+                </tr>
+              </tbody>
+            </teble>
+
+            <h2>New book</h2>
+            <% if @book.errors.any? %>
+              <%= @book.errors.count %>errors prohibited this book from being saved:
+                <ul>
+                  <% @book.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+                </ul>
+            <% end %>
+            <%= form_with model: @book do |f| %>
+            <div class="from-group">
+              Title<br>
+            <%= f.text_field :title %>
+            </div>
+            <div class="from-group">
+              Opinion<br>
+            <%= f.text_area :body %>
+            </div>
+
+            <div><%= f.submit 'Create Book' %></div>
+          </div>
+        </div>
+      <div>
+
+      <div class="container">
+        <div class="row">
+          <div class="col-md-9">
+            <h2>Books</h2>
+
+            <%= @books.each do |book| %>
+
+            <div>
+            <%= image_tag book.get_image %>
+              <p><%= image_tag @books.user.get_profile_image(100,100) %></p>
+            </div><div>
+ 　　　　　　　　　　 <h3><%= @user.name %></h3>
+ 　　　　　　　　　　 <%= image_tag @user.get_profile_image(100,100) %>
+　　　　　　</div>
+　　　　　　<% end %>
+
+　　　　　　<% @users.each do |user| %>
+　　　　　　<div>
+  　　　　　　　　<%= link_to user_path(user.id) do %>
+   　　　　　　　　　<p><%= image_tag user.get_profile_image(100,100) %></p>
+ 　　　　　　　　　　　 <% end %>
+　　　　　　
+　　　　　　</div>
+
+            <% end %>
+          </div>
+        </div>
+      </div>
 
 
-</div>
+      <% end %>
+    </main>
+  </body>
+</html>
+

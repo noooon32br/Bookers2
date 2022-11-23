@@ -2,7 +2,7 @@
 <html>
   <body>
   <% if @book.errors.any? %>
-    <%= @book.errors.count %>errors prohibited this book from being saved: %>
+    <%= @book.errors.count %>errors prohibited this book from being saved:
     <main>
       <div class="container">
         <div  class="row">
@@ -22,15 +22,15 @@
                 </tr>
               </tbody>
             </teble>
-        
+
             <h2>New book</h2>
               <ul>
                 <% @book.errors.full_messages.each do |massage| %>
                 <li><%= massage %></li>
                 <% end %>
               </ul>
-             
-   
+
+
             <%= form_with model: @book do |f| %>
             <div class="from-group">
               Title<br>
@@ -62,6 +62,24 @@
           </div>
         </div>
       </div>
+
+      <h2>Users</h2>
+      <% @users.each do |user| %>
+    <table>
+      <thead>
+        <tr>
+        <th>image</th>
+        <th>name</th>
+        </tr>
+      </thead>
+      <tbody>
+
+      </tbody>
+    </table>
+
+
+
+      <% end %>
     </main>
     <% end %>
   </body>
