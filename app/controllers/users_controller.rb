@@ -4,8 +4,10 @@ class UsersController < ApplicationController
   end
 
   def index
-    @user = User.all
-    @books = Book
+    @users = User.all
+    @books = Book.all
+    @user = current_user
+    @book = Book.new
   end
 
   def show
@@ -13,12 +15,13 @@ class UsersController < ApplicationController
     @books = @user.books
     @users = User.all
     @book = Book.new
+
   end
 
   def create
-    user = User.show(user_params)
+    @user = User.new(user_params)
     if @user.save
-      redirect_to user_path(user.id)
+      redirect_to user_path(@user.id)
     else
       render :new
     end

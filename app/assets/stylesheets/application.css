@@ -40,3 +40,7 @@ code {
 .text-muted {
   text-align: center;
 }
+
+.box {
+  flex-grow: 1;
+}
